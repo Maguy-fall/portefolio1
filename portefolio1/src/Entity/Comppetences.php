@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ComppetencesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CompetencesRepository;
+use App\Repository\ComppetencesRepository;
 
 /**
- * @ORM\Entity(repositoryClass=ComppetencesRepository::class)
+ * @ORM\Entity(repositoryClass=CompetencesRepository::class)
  */
 class Comppetences
 {

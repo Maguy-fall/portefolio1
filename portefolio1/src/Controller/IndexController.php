@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProjetsRepository;
+use App\Repository\CompetencesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -19,4 +20,22 @@ class IndexController extends AbstractController
             'projets' => '$projets',
         ]);
     }
+    /**
+     * @Route("/competences", name="competences")
+     */
+    public function skill(CompetencesRepository $competencesRepository)
+    {
+        $technos = $competencesRepository->findByType("Technologie");
+        $frameworks = $competencesRepository->findByType("Framework");
+        $cms = $competencesRepository->findByType("CMS");
+
+        $skills = ["Technologies" => $technos, "Frameworks" => $frameworks, "CMS" => $cms ];
+
+        return $this->render('index/skills.html.twig', [
+            'skills' => $skills
+        ]);
+    }
+
 }
+
+
